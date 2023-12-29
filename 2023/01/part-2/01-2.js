@@ -14,7 +14,7 @@ const nombresEnLettres = {
 const fs = require('fs');
 
 // Nom du fichier
-const fileName = 'calibration.txt';
+const fileName = '../calibration.txt';
 
 // Lecture du contenu du fichier
 const content = fs.readFileSync(fileName, 'utf-8');
