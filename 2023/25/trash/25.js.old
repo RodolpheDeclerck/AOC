@@ -1,0 +1,48 @@
+class Node {
+    constructor() {
+      this.nodes = new Map();
+    }
+  
+    addNode(node) {
+      this.nodes.set(node, []);
+    }
+  
+    addEdge(node1, node2) {
+      this.nodes.get(node1).push(node2);
+      this.nodes.get(node2).push(node1); // Pour un graphe non orienté
+    }
+  
+    getNeighbors(node) {
+      return this.nodes.get(node);
+    }
+  }
+
+
+const fs = require('fs');
+
+// Nom du fichier
+const fileName = 'diagramme.txt';
+
+// Lecture du contenu du fichier
+const content = fs.readFileSync(fileName, 'utf-8').replace(/:/g, '');
+
+const contentTab = content.replace(/[\n]/g, "").replace(/[\r]/g, " ").split(" ");
+
+const myMap = new Map();
+
+contentTab.forEach(function (element, index){
+    if(myMap.has(element)){
+        myMap.set(element, myMap.get(element) + 1);
+    }
+    else{
+        myMap.set(element, 1);
+    }
+});
+
+
+console.log('\nContenu du fichier:', content);
+console.log('\nContenu du tableau:', contentTab);
+console.log('\nContenu de la map:', myMap);
+
+
+//hfx/pzl,  bvb/cmg,  nvd/jqt
